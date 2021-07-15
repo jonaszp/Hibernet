@@ -465,10 +465,9 @@ def starturl(): # in questa funzione setto l'url per renderlo usabile per il fut
 	global urlport
 	global choice1
 	global ips
-		url = "51.75.52.94:28015/monuments.json"()
+		url = "http://51.75.52.94:28015/monuments.json"
 
-		if url == "":
-			print ("Please enter the url.")
+		
 			starturl()
 
 		try:
